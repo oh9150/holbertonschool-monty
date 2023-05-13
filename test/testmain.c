@@ -19,13 +19,14 @@ int main(int argc, char *argv[])
 		printf("%s", buf);
 
 		holder = strtok(buf, " ");
+		holder = strtok(holder, "\n");
 		while (holder)
 		{
 			printf("%s ", holder);
 			holder = strtok(NULL, " ");
 		}
-		printf("\n");
 	}
+	getline(&buf, &n, fp);
 
 	return (0);
 }

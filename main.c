@@ -18,15 +18,15 @@ void __exit(char *message)
  * @argc: ammount of arguments
  * @argv: the arguments
  *
- * Return: 
+ * Return: 0
  */
 int main(int argc, char *argv[])
 {
-	char *opcode, *buf = NULL;
+	char *opcode = NULL, *buf = NULL;
 	void (*func)(stack_t **stack, unsigned int line_number);
 	size_t n = 0, line_number = 1;
-	FILE *fp;
-	stack_t **stack = NULL;
+	FILE *fp = NULL;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 		__exit("USAGE: monty file\n");
@@ -42,11 +42,11 @@ int main(int argc, char *argv[])
 			dprintf(2, "L%lu: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
-		func(stack, line_number);
+		func(&stack, line_number);
 		line_number++;
 		opcode = get_opcode(buf, n, fp, line_number);
 	}
-	free(buf);
+	free(stack);
 }
 
 

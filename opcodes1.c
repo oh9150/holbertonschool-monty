@@ -12,13 +12,12 @@ void push(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 {
 	stack_t *new_node;
 
-	printf("started push func");
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
-		__exit("Error: malloc failed");
+		__exit("Error: malloc failed\n");
 
 	new_node->n = value;
-	if (!stack)
+	if (!(*stack))
 	{
 		*stack = new_node;
 		return;
@@ -26,6 +25,7 @@ void push(stack_t **stack, __attribute__((unused)) unsigned int line_number)
 
 	(*stack)->prev = new_node;
 	new_node->next = *stack;
+	*stack = new_node;
 }
 
 /**

@@ -13,16 +13,19 @@ int value;
 char *get_opcode(char *buf, size_t len, FILE *fp, size_t line_number)
 {
 	size_t i = 0;
-	char *opcode, *num;
+	char *opcode, *num, *opcode1;
 
-	getline(&buf, &len, fp);
+	if (getline(&buf, &len, fp) == -1)
+		return (NULL);
+
 	opcode = strtok(buf, " ");
-	printf("%s\n", opcode);
+	num = strtok(NULL, " ");
+	opcode = strtok(opcode, "\n");
+	if (!opcode)
+		return (NULL);
+
 	if (strcmp(opcode, "push") == 0)
 	{
-		num = strtok(NULL, " ");
-		printf("%s\n", num);
-
 		while ((num[i] != '\0') && (num[i] != '\n'))
 		{
 			if (isdigit(num[i]) == 0)
@@ -32,7 +35,6 @@ char *get_opcode(char *buf, size_t len, FILE *fp, size_t line_number)
 			}
 			i++;
 		}
-		printf("%s\n", num);
 		value = atoi(num);
 	}
 

@@ -20,13 +20,11 @@ void (*get_func(char *name))(stack_t **stack, unsigned int line_number)
 	};
 	int i = 0;
 
-	printf("starting getfunc\n");
 	while (ops[i].opcode)
 	{
 		if (strcmp(name, ops[i].opcode) == 0)
-		{
 			return (ops[i].f);
-		}
+
 		i++;
 	}
 	return (NULL);
