@@ -16,6 +16,11 @@ void (*get_func(char *name))(stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
+		{"div", div},
+		{"mul", mul},
+		{"mod", mod},
+		{"#", nop},
 		{NULL, NULL}
 	};
 	int i = 0;

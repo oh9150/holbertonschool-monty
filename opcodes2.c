@@ -38,7 +38,7 @@ void nop(__attribute__((unused)) stack_t **stack, __attribute__((unused))
 }
 
 /**
-* sub - subtracts the top elements from the second, the result is stored
+* sub - subtracts the top element from the second, the result is stored
 * in the second element and the first one is removed
 * @stack: the stack
 * @line_number: the line number
@@ -62,3 +62,56 @@ void sub(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 }
 
+/**
+* div - divides the second top element by the first, the result is stored
+* in the second element and the first one is removed
+* @stack: the stack
+* @line_number: the line number
+*/
+void div(stack_t **stack, unsigned int line_number)
+{
+	int i = 0;
+	stack_t *tmp = *stack;
+
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (i < 2)
+	{
+		dprintf(2, "L%u: can't div, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if ((*stack)->n == 0)
+	{
+		dprintf(2, "L%u: division by zero\n");
+		exit(EXIT_FAILURE);
+	}
+	((*stack)->next)->n /= (*stack)->n;
+	pop(stack, line_number);
+}
+
+/**
+* mul - multiplies the top elements, the result is stored in the second
+* element and the first one is removed.
+* @stack: the stack
+* @line_number: the line number
+*/
+void mul(stack_t **stack, unsigned int line_number)
+{
+	int i = 0;
+	stack_t *tmp = *stack;
+	while (tmp)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (i < 2)
+	{
+		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	((*stack)->next)->n *= (*stack)->n;
+	pop(stack, line_number);
+}
