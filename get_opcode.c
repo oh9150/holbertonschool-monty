@@ -13,7 +13,7 @@ int value;
 char *get_opcode(char *buf, size_t len, FILE *fp, size_t line_number)
 {
 	size_t i = 0;
-	char *opcode, *num, *opcode1;
+	char *opcode, *num;
 
 	if (getline(&buf, &len, fp) == -1)
 		return (NULL);
