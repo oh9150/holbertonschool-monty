@@ -17,7 +17,7 @@ void (*get_func(char *name))(stack_t **stack, unsigned int line_number)
 		{"add", add},
 		{"nop", nop},
 		{"sub", sub},
-		{"div", div},
+		{"div", _div},
 		{"mul", mul},
 		{"mod", mod},
 		{"#", nop},

@@ -23,7 +23,7 @@ void mod(stack_t **stack, unsigned int line_number)
         }
         if ((*stack)->n == 0)
         {
-                dprintf(2, "L%u: division by zero\n");
+                dprintf(2, "L%u: division by zero\n", line_number);
                 exit(EXIT_FAILURE);
         }
         ((*stack)->next)->n %= (*stack)->n;

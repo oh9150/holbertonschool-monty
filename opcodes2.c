@@ -68,7 +68,7 @@ void sub(stack_t **stack, unsigned int line_number)
 * @stack: the stack
 * @line_number: the line number
 */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_t **stack, unsigned int line_number)
 {
 	int i = 0;
 	stack_t *tmp = *stack;
@@ -85,7 +85,7 @@ void div(stack_t **stack, unsigned int line_number)
 	}
 	if ((*stack)->n == 0)
 	{
-		dprintf(2, "L%u: division by zero\n");
+		dprintf(2, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	((*stack)->next)->n /= (*stack)->n;
