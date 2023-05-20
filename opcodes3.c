@@ -18,12 +18,12 @@ void mod(stack_t **stack, unsigned int line_number)
         }
         if (i < 2)
         {
-                dprintf(2, "L%u: can't add, stack too short\n", line_number);
+                fprintf(stderr, "L%u: can't add, stack too short\n", line_number);
                 exit(EXIT_FAILURE);
         }
         if ((*stack)->n == 0)
         {
-                dprintf(2, "L%u: division by zero\n", line_number);
+                fprintf(stderr, "L%u: division by zero\n", line_number);
                 exit(EXIT_FAILURE);
         }
         ((*stack)->next)->n %= (*stack)->n;

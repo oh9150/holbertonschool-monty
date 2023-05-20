@@ -11,7 +11,7 @@ FILE *check_file(char *pathname)
 
 	if (!fp)
 	{
-		dprintf(2, "Error: Can't open file %s\n", pathname);
+		fprintf(stderr, "Error: Can't open file %s\n", pathname);
 		exit(EXIT_FAILURE);
 	}
 	return (fp);

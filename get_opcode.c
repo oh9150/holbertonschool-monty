@@ -32,7 +32,7 @@ char *get_opcode(char *buf, size_t len, FILE *fp, size_t line_number)
 		{
 			if (isdigit(num[i]) == 0)
 			{
-				printf("L%lu: usage: push integer\n", line_number);
+				fprintf(stderr, "L%lu: usage: push integer\n", line_number);
 				exit(EXIT_FAILURE);
 			}
 			i++;

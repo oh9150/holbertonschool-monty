@@ -9,7 +9,7 @@
  */
 void __exit(char *message)
 {
-	dprintf(2, "%s", message);
+	fprintf(stderr, "%s", message);
 	exit(EXIT_FAILURE);
 }
 
@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		func = get_func(opcode);
 		if (!func)
 		{
-			dprintf(2, "L%lu: unknown instruction %s\n", line_number, opcode);
+			fprintf(stderr, "L%lu: unknown instruction %s\n", line_number, opcode);
 			exit(EXIT_FAILURE);
 		}
 		func(&stack, line_number);
