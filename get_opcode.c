@@ -26,6 +26,8 @@ char *get_opcode(char *buf, size_t len, FILE *fp, size_t line_number)
 
 	if (strcmp(opcode, "push") == 0)
 	{
+		if (!num)
+			num = "a";
 		while ((num[i] != '\0') && (num[i] != '\n'))
 		{
 			if (isdigit(num[i]) == 0)
